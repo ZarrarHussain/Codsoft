@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Forecast App</h1>
+        <form method="POST">
+            <input type="text" name="location" placeholder="Enter city name or zip code" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weather-info">
+            {% if weather_data %}
+                <h2>Weather in {{ weather_data['name'] }}</h2>
+                <p>Description: {{ weather_data['weather'][0]['description'] }}</p>
+                <p>Temperature: {{ weather_data['main']['temp'] }}°C</p>
+                <p>Humidity: {{ weather_data['main']['humidity'] }}%</p>
+                <p>Wind Speed: {{ weather_data['wind']['speed'] }} m/s</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
